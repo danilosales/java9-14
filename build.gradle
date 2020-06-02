@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_14
+    group 'dev.danilosales'
+    version '1.0-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile).each {
+    it.options.compilerArgs.add("--enable-preview")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    jvmArgs("--enable-preview")
+}
+
+
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+}
